@@ -106,7 +106,7 @@ export function renderAnalytics(container, navigateTo) {
             return `
               <div>
                 <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 4px;">
-                  <span style="font-weight: 600; color: #fff;">${camp.campName}</span>
+                  <span style="font-weight: 600; color: var(--text-primary);">${camp.campName}</span>
                   <span style="color: ${color}; font-weight: 700; font-family: var(--font-mono);">${camp.percentHealthy}% Healthy (${camp.lowCount} low)</span>
                 </div>
                 <div style="height: 8px; background: var(--bg-surface-elevated); border-radius: var(--radius-full); overflow: hidden;">
@@ -128,7 +128,7 @@ export function renderAnalytics(container, navigateTo) {
         <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 14px;">
           ${Object.entries(categoryTotals).map(([cat, total]) => `
             <div style="display: flex; align-items: center; justify-content: space-between; padding: 8px 12px; background: var(--bg-surface-elevated); border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
-              <span style="font-weight: 600; color: #cbd5e1;">${cat}</span>
+              <span style="font-weight: 600; color: var(--text-primary);">${cat}</span>
               <span style="font-weight: 700; font-size: 14px; color: var(--teal-400); font-family: var(--font-mono);">${total} Units</span>
             </div>
           `).join('')}
@@ -145,17 +145,17 @@ export function renderAnalytics(container, navigateTo) {
         <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 14px;">
           <div style="background: rgba(244,63,94,0.08); border: 1px solid rgba(244,63,94,0.3); border-radius: var(--radius-md); padding: 14px; text-align: center;">
             <div style="color: var(--rose-400); font-weight: 700; font-size: 11px; text-transform: uppercase;">Critical</div>
-            <div style="font-size: 26px; font-weight: 800; color: #fff; font-family: var(--font-mono); margin: 4px 0;">${priorityCounts.Critical}</div>
+            <div style="font-size: 26px; font-weight: 800; color: var(--text-primary); font-family: var(--font-mono); margin: 4px 0;">${priorityCounts.Critical}</div>
             <div style="font-size: 10px; color: var(--text-muted);">Immediate triage</div>
           </div>
           <div style="background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.3); border-radius: var(--radius-md); padding: 14px; text-align: center;">
             <div style="color: var(--amber-400); font-weight: 700; font-size: 11px; text-transform: uppercase;">High</div>
-            <div style="font-size: 26px; font-weight: 800; color: #fff; font-family: var(--font-mono); margin: 4px 0;">${priorityCounts.High}</div>
+            <div style="font-size: 26px; font-weight: 800; color: var(--text-primary); font-family: var(--font-mono); margin: 4px 0;">${priorityCounts.High}</div>
             <div style="font-size: 10px; color: var(--text-muted);">&lt; 8h target</div>
           </div>
           <div style="background: rgba(148,163,184,0.08); border: 1px solid rgba(148,163,184,0.3); border-radius: var(--radius-md); padding: 14px; text-align: center;">
-            <div style="color: #cbd5e1; font-weight: 700; font-size: 11px; text-transform: uppercase;">Normal</div>
-            <div style="font-size: 26px; font-weight: 800; color: #fff; font-family: var(--font-mono); margin: 4px 0;">${priorityCounts.Normal}</div>
+            <div style="color: var(--text-secondary); font-weight: 700; font-size: 11px; text-transform: uppercase;">Normal</div>
+            <div style="font-size: 26px; font-weight: 800; color: var(--text-primary); font-family: var(--font-mono); margin: 4px 0;">${priorityCounts.Normal}</div>
             <div style="font-size: 10px; color: var(--text-muted);">Scheduled run</div>
           </div>
         </div>

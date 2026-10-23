@@ -63,7 +63,7 @@ export function renderCamps(container, navigateTo, activeCampId = null) {
     <!-- Map View Card Panel (PDF Page 3 & 4 Specification) -->
     <div class="card-panel" style="padding: 12px; margin-bottom: 24px; position: relative;">
       <div style="display: flex; align-items: center; justify-content: space-between; padding: 4px 8px 12px 8px; flex-wrap: wrap; gap: 8px;">
-        <div style="font-weight: 600; font-size: 13.5px; color: #fff; display: flex; align-items: center; gap: 8px;">
+        <div style="font-weight: 600; font-size: 13.5px; color: var(--text-primary); display: flex; align-items: center; gap: 8px;">
           <span>🗺️ Regional Distribution Map (Uttarakhand Command Zone)</span>
           <span class="status-pill status-approved" style="font-size: 10px;">${camps.length} Active Hubs</span>
         </div>
@@ -256,7 +256,7 @@ export function renderCamps(container, navigateTo, activeCampId = null) {
             </span>
           </td>
           <td>
-            <div style="font-weight: 600; color: #fff;">${c.name}</div>
+            <div style="font-weight: 600; color: var(--text-primary);">${c.name}</div>
           </td>
           <td>📍 ${c.location}</td>
           <td>${c.contact || '<span style="color: var(--text-muted); font-style: italic;">Unassigned</span>'}</td>

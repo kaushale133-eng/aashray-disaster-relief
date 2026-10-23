@@ -145,10 +145,15 @@ html, body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 /* Header & Mission Banner */
 .top-header {
+  width: 100%;
   background: var(--bg-surface-glass);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-subtle);
@@ -160,12 +165,14 @@ html, body {
 .banner-live-notice {
   background: linear-gradient(90deg, #18090d 0%, #0f172a 40%, #082f49 100%);
   border-bottom: 1px solid rgba(239, 68, 68, 0.3);
-  padding: 6px 24px;
+  padding: 6px clamp(12px, 2.2vw, 36px);
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: 11.5px;
   color: #bae6fd;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .banner-live-notice .badge-tag {
@@ -204,9 +211,11 @@ html, body {
 }
 
 .header-main {
-  max-width: 1540px;
-  margin: 0 auto;
-  padding: 10px 24px;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  box-sizing: border-box;
+  padding: 10px clamp(12px, 2.2vw, 36px);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -402,9 +411,11 @@ select option,
 
 /* Main Navigation Bar */
 .nav-bar {
-  max-width: 1540px;
-  margin: 0 auto;
-  padding: 0 24px;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0 clamp(12px, 2.2vw, 36px);
   display: flex;
   gap: 4px;
   overflow-x: auto;
@@ -467,10 +478,11 @@ select option,
 
 /* Page Content Viewport */
 .main-content {
-  max-width: 1540px;
   width: 100%;
-  margin: 0 auto;
-  padding: 24px;
+  max-width: 100%;
+  margin: 0;
+  box-sizing: border-box;
+  padding: clamp(14px, 2vw, 28px) clamp(12px, 2.2vw, 36px);
   flex: 1;
 }
 
@@ -509,9 +521,25 @@ select option,
 /* Tactical Stat Cards */
 .metrics-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 16px;
   margin-bottom: 24px;
+  width: 100%;
+}
+
+.status-breakdown-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
+  width: 100%;
+}
+
+.dashboard-split-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.8fr) minmax(0, 1.2fr);
+  gap: 20px;
+  width: 100%;
 }
 
 .metric-card {
@@ -1373,23 +1401,7 @@ select option,
   font-family: var(--font-mono);
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .header-main {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .header-actions {
-    width: 100%;
-    justify-content: space-between;
-  }
-  .main-content {
-    padding: 16px;
-  }
-  .metrics-grid {
-    grid-template-columns: 1fr;
-  }
-}
+
 
 /* Status Counter Colors (Theme-Adaptive) */
 .status-counter-pending { color: #fbbf24; }
@@ -1716,32 +1728,33 @@ select option,
    Multi-Device Responsive System (Projector, Laptop, Tablet, Mobile)
    ========================================================================== */
 
-/* 1. Large Displays & Projectors (Command Center Screens >= 1600px) */
-@media (min-width: 1600px) {
-  .header-main,
-  .nav-bar,
-  .main-content {
-    max-width: 1800px;
-  }
-
+/* 1. Large Displays & Projectors (Command Center Screens >= 1400px) */
+@media (min-width: 1400px) {
   .metrics-grid {
     grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
   }
 
   .view-header-title {
-    font-size: 24px;
+    font-size: 22px;
   }
 }
 
-/* 2. Tablets & Small Laptops (769px - 1024px) */
-@media (max-width: 1024px) {
+/* 2. Tablets & Small Laptops (769px - 1100px) */
+@media (max-width: 1100px) {
   .metrics-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
+    gap: 14px;
   }
 
   .dashboard-split-layout {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .status-breakdown-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
   }
 }
 
@@ -1756,7 +1769,7 @@ select option,
     flex-direction: column;
     align-items: flex-start;
     gap: 6px;
-    padding: 8px 14px;
+    padding: 8px 12px;
     font-size: 11px;
   }
 
@@ -1764,7 +1777,7 @@ select option,
     flex-direction: column;
     align-items: stretch;
     gap: 12px;
-    padding: 10px 14px;
+    padding: 10px 12px;
   }
 
   .header-actions {
@@ -1778,7 +1791,7 @@ select option,
 
   .role-selector-wrap {
     flex: 1;
-    min-width: 170px;
+    min-width: 160px;
   }
 
   .role-select {
@@ -1798,7 +1811,7 @@ select option,
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    padding: 0 12px;
+    padding: 0 8px;
     gap: 4px;
   }
 
@@ -1817,14 +1830,33 @@ select option,
     padding: 12px;
   }
 
+  /* 2x2 compact grid on mobile so 4 cards fit neatly without infinite scrolling */
   .metrics-grid {
-    grid-template-columns: 1fr;
-    gap: 12px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .metric-card {
+    padding: 12px 14px;
+  }
+
+  .metric-title {
+    font-size: 11px;
+  }
+
+  .metric-value {
+    font-size: 20px;
+  }
+
+  .metric-footer {
+    font-size: 10.5px;
   }
 
   .status-breakdown-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-columns: repeat(2, 1fr);
     gap: 8px;
+    margin-bottom: 16px;
   }
 
   .card-panel {
@@ -1852,7 +1884,7 @@ select option,
 
   .view-actions .btn {
     flex: 1;
-    min-width: 140px;
+    min-width: 130px;
   }
 
   /* Responsive table containers */
@@ -1866,7 +1898,7 @@ select option,
   }
 
   #camp-map-container {
-    height: 350px !important;
+    height: 320px !important;
   }
 
   .modal-container,
@@ -1906,8 +1938,8 @@ select option,
   }
 
   .brand-logo-badge {
-    width: 34px;
-    height: 34px;
+    width: 32px;
+    height: 32px;
   }
 
   #role-pill-badge {
@@ -1926,10 +1958,6 @@ select option,
     font-size: 9.5px;
   }
 
-  .status-breakdown-grid {
-    grid-template-columns: 1fr 1fr !important;
-  }
-
   .filter-bar {
     flex-direction: column;
     align-items: stretch;
@@ -1939,6 +1967,17 @@ select option,
   .filter-bar select,
   .filter-bar input {
     width: 100%;
+  }
+}
+
+/* 5. Extremely Narrow Devices (<= 360px) */
+@media (max-width: 360px) {
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .status-breakdown-grid {
+    grid-template-columns: 1fr;
   }
 }
 

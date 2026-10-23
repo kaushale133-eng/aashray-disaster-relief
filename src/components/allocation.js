@@ -164,12 +164,12 @@ export function renderAllocation(container, navigateTo, params = {}) {
         <div class="req-queue-item" data-id="${r.id}" style="background: ${isSelected ? 'var(--bg-surface-active)' : 'var(--bg-surface-elevated)'}; border: 1px solid ${isSelected ? 'var(--teal-400)' : 'var(--border-subtle)'}; border-left: 4px solid ${r.priority === 'Critical' ? 'var(--rose-500)' : r.priority === 'High' ? 'var(--amber-500)' : 'var(--border-bright)'}; padding: 12px 14px; border-radius: var(--radius-md); cursor: pointer; transition: all var(--transition-fast);">
           <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 4px;">
             <div>
-              <strong style="color: #fff; font-size: 13px;">${r.id}</strong> — <span style="color: var(--teal-400); font-weight: 600;">${r.campName}</span>
+              <strong style="color: var(--text-primary); font-size: 13px;">${r.id}</strong> — <span style="color: var(--teal-400); font-weight: 600;">${r.campName}</span>
             </div>
             <span class="status-pill status-${r.status.toLowerCase().replace(/\s+/g, '-')}">${r.status}</span>
           </div>
 
-          <div style="font-size: 12px; color: #cbd5e1; margin-bottom: 6px;">
+          <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 6px;">
             Need: <strong>${r.quantity} ${r.unit}</strong> of <strong>${r.requiredSupply}</strong>
             ${allocated > 0 ? `<span style="color: var(--emerald-400);"> (Allocated: ${allocated})</span>` : ''}
           </div>
@@ -228,15 +228,15 @@ export function renderAllocation(container, navigateTo, params = {}) {
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
           <div>
             <span style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Selected Request</span>
-            <div style="font-size: 15px; font-weight: 700; color: #fff;">
+            <div style="font-size: 15px; font-weight: 700; color: var(--text-primary);">
               Request #${selectedReq.id} • ${selectedReq.campName}
             </div>
           </div>
           <span class="priority-pill priority-${selectedReq.priority.toLowerCase()}">${selectedReq.priority}</span>
         </div>
 
-        <div style="font-size: 12.5px; color: #cbd5e1;">
-          Required: <strong style="color: #fff;">${selectedReq.quantity} ${selectedReq.unit}</strong> of <strong style="color: var(--teal-400);">${selectedReq.requiredSupply}</strong>
+        <div style="font-size: 12.5px; color: var(--text-secondary);">
+          Required: <strong style="color: var(--text-primary);">${selectedReq.quantity} ${selectedReq.unit}</strong> of <strong style="color: var(--teal-400);">${selectedReq.requiredSupply}</strong>
         </div>
         ${selectedReq.description ? `
           <div style="font-size: 11.5px; color: var(--text-secondary); margin-top: 4px; font-style: italic;">
@@ -260,7 +260,7 @@ export function renderAllocation(container, navigateTo, params = {}) {
           <span class="alloc-stat-value" style="color: ${remainingDeficit > 0 ? 'var(--amber-400)' : 'var(--emerald-400)'};">${remainingDeficit} ${selectedReq.unit}</span>
         </div>
         <div class="alloc-stat-row" style="background: rgba(255,255,255,0.02); padding: 6px 4px;">
-          <span class="alloc-stat-label" style="color: #fff; font-weight: 600;">Current Camp Stock (${selectedReq.campName})</span>
+          <span class="alloc-stat-label" style="color: var(--text-primary); font-weight: 600;">Current Camp Stock (${selectedReq.campName})</span>
           <span class="alloc-stat-value" style="color: ${availableStock < remainingDeficit ? 'var(--rose-400)' : 'var(--emerald-400)'}; font-size: 14px;">
             ${availableStock} ${stockItem ? stockItem.unit : selectedReq.unit}
           </span>

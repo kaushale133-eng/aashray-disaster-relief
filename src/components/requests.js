@@ -342,7 +342,7 @@ export function renderRequests(container, navigateTo, filterParams = {}) {
             <strong>${req.campName}</strong>
             <span style="font-size: 10px; color: var(--teal-400); font-family: var(--font-mono); margin-left: 4px;">(${req.campId || ''})</span>
           </td>
-          <td><span style="font-weight: 600; color: #fff;">${req.requiredSupply}</span></td>
+          <td><span style="font-weight: 600; color: var(--text-primary);">${req.requiredSupply}</span></td>
           <td style="font-family: var(--font-mono);">${req.quantity} ${req.unit}</td>
           <td>
             <span style="font-family: var(--font-mono); color: ${allocated > 0 ? (isFulfilled ? 'var(--emerald-400)' : 'var(--amber-400)') : 'var(--text-muted)'}; font-weight: 600;">
@@ -484,7 +484,7 @@ export function renderRequests(container, navigateTo, filterParams = {}) {
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
         <div style="background: var(--bg-surface-elevated); padding: 12px; border-radius: var(--radius-md);">
           <div style="color: var(--text-muted); font-size: 11px; text-transform: uppercase;">Camp &amp; Resource</div>
-          <div style="font-weight: 700; color: #fff; font-size: 13.5px; margin-top: 2px;">${req.campName} (${req.campId || ''})</div>
+          <div style="font-weight: 700; color: var(--text-primary); font-size: 13.5px; margin-top: 2px;">${req.campName} (${req.campId || ''})</div>
           <div style="color: var(--teal-400); font-size: 12px;">${req.requiredSupply}</div>
         </div>
         <div style="background: var(--bg-surface-elevated); padding: 12px; border-radius: var(--radius-md);">
@@ -513,7 +513,7 @@ export function renderRequests(container, navigateTo, filterParams = {}) {
 
       <div style="margin-bottom: 16px;">
         <div style="font-size: 11.5px; font-weight: 600; color: var(--text-secondary); text-transform: uppercase;">Description / Notes</div>
-        <div style="background: var(--bg-input); padding: 10px 12px; border-radius: var(--radius-md); font-size: 12.5px; color: #cbd5e1; margin-top: 4px; border: 1px solid var(--border-subtle);">
+        <div style="background: var(--bg-input); padding: 10px 12px; border-radius: var(--radius-md); font-size: 12.5px; color: var(--text-secondary); margin-top: 4px; border: 1px solid var(--border-subtle);">
           ${req.description || 'No additional justification provided.'}
         </div>
       </div>
@@ -597,6 +597,13 @@ export function renderRequests(container, navigateTo, filterParams = {}) {
   if (filterParams.openModal) {
     setTimeout(() => {
       openCreateModal();
+    }, 60);
+  }
+
+  // Auto-open request details modal if requested via navigation
+  if (filterParams.inspectRequestId) {
+    setTimeout(() => {
+      openDetailsModal(filterParams.inspectRequestId);
     }, 60);
   }
 

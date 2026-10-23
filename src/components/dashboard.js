@@ -144,7 +144,7 @@ export function renderDashboard(container, navigateTo) {
     ` : ''}
 
     <!-- Quick Status Breakdown Grid -->
-    <div class="status-breakdown-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 24px;">
+    <div class="status-breakdown-grid">
       <div class="card-panel" style="padding: 12px 16px; margin-bottom: 0;">
         <div style="color: var(--text-muted); font-size: 11px; text-transform: uppercase;">Pending Review</div>
         <div class="status-counter-pending" style="font-size: 22px; font-weight: 700; font-family: var(--font-mono);">${metrics.statusCounts['Pending'] || 0}</div>
@@ -168,7 +168,7 @@ export function renderDashboard(container, navigateTo) {
     </div>
 
     <!-- Two Column Layout: Recent Requests & Low Stock Alerts -->
-    <div class="dashboard-split-layout" style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px;">
+    <div class="dashboard-split-layout">
       
       <!-- Recent Requests -->
       <div class="card-panel" style="margin-bottom: 0;">
@@ -240,7 +240,7 @@ export function renderDashboard(container, navigateTo) {
             return `
               <div style="background: ${isCritical ? 'rgba(244, 63, 94, 0.08)' : 'rgba(245, 158, 11, 0.08)'}; border: 1px solid ${isCritical ? 'rgba(244, 63, 94, 0.25)' : 'rgba(245, 158, 11, 0.25)'}; padding: 10px 12px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: space-between;">
                 <div>
-                  <div style="font-weight: 600; font-size: 12.5px; color: #fff;">
+                  <div style="font-weight: 600; font-size: 12.5px; color: var(--text-primary);">
                     ${item.campName} — ${item.resource}
                   </div>
                   <div style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">
@@ -280,14 +280,14 @@ export function renderDashboard(container, navigateTo) {
   container.querySelectorAll('.action-inspect-req').forEach(btn => {
     btn.addEventListener('click', (e) => {
       const id = e.currentTarget.getAttribute('data-id');
-      window.dispatchEvent(new CustomEvent('aashray:view-request-details', { detail: { id } }));
+      navigateTo('requests', { inspectRequestId: id });
     });
   });
 
   container.querySelectorAll('.action-quick-restock').forEach(btn => {
     btn.addEventListener('click', (e) => {
       const id = e.currentTarget.getAttribute('data-id');
-      window.dispatchEvent(new CustomEvent('aashray:open-restock-modal', { detail: { id } }));
+      navigateTo('inventory', { restockId: id });
     });
   });
 }

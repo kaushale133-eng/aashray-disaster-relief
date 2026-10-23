@@ -329,10 +329,10 @@ export function renderInventory(container, navigateTo, filterParams = {}) {
             <strong>${item.campName}</strong>
             <span style="font-size: 10px; color: var(--teal-400); font-family: var(--font-mono); margin-left: 4px;">(${item.campId || 'C-??'})</span>
           </td>
-          <td><span style="font-weight: 600; color: #fff;">${item.resource}</span></td>
+          <td><span style="font-weight: 600; color: var(--text-primary);">${item.resource}</span></td>
           <td><span style="font-size: 11px; background: rgba(255,255,255,0.05); padding: 2px 6px; border-radius: 4px;">${item.category || 'General'}</span></td>
           <td>
-            <strong style="font-size: 14px; font-family: var(--font-mono); color: ${qty < limit ? 'var(--rose-400)' : '#fff'};">
+            <strong style="font-size: 14px; font-family: var(--font-mono); color: ${qty < limit ? 'var(--rose-400)' : 'var(--text-primary)'};">
               ${qty}
             </strong>
             <span style="color: var(--text-muted); font-size: 11px;"> ${item.unit}</span>
@@ -391,7 +391,7 @@ export function renderInventory(container, navigateTo, filterParams = {}) {
     container.querySelector('#restock-summary-box').innerHTML = `
       <div>
         <strong>${item.campName} (${item.campId || ''})</strong> • ${item.resource} <span style="font-family: var(--font-mono); color: #7dd3fc;">[${item.id}]</span><br/>
-        Current Available Quantity: <strong style="color: #fff; font-size: 13px;">${item.quantity} ${item.unit}</strong><br/>
+        Current Available Quantity: <strong style="color: var(--text-primary); font-size: 13px;">${item.quantity} ${item.unit}</strong><br/>
         Safety Threshold: ${item.lowStockLimit} ${item.unit}
       </div>
     `;
@@ -488,6 +488,13 @@ export function renderInventory(container, navigateTo, filterParams = {}) {
     addItemModal.classList.remove('open');
     renderInventoryTable();
   });
+
+  // Auto-open restock modal if requested via navigation
+  if (filterParams.restockId) {
+    setTimeout(() => {
+      openRestockModal(filterParams.restockId);
+    }, 60);
+  }
 
   // Listen for external open-restock-modal
   window.addEventListener('aashray:open-restock-modal', (e) => {
