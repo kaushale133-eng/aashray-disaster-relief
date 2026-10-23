@@ -27,7 +27,18 @@ To produce an optimized production bundle:
 ```powershell
 npm.cmd run build
 npm.cmd run preview
+# or run the production server:
+npm.cmd start
 ```
+
+---
+
+## 🌐 Deploy to Render
+
+AASHRAY is ready for deployment on **Render**:
+- **Static Site (Recommended):** Build Command: `npm run build`, Publish Directory: `dist`
+- **Render Blueprint:** Automatically deploys using [`render.yaml`](./render.yaml).
+- See detailed instructions in **[`RENDER_DEPLOYMENT.md`](./RENDER_DEPLOYMENT.md)**.
 
 ---
 
