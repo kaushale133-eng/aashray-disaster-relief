@@ -60,6 +60,19 @@ export function setMapTileType(type) {
   }
 }
 
+// Global theme change listener for interactive map tiles
+if (typeof window !== 'undefined') {
+  window.addEventListener('aashray:theme-change', (e) => {
+    const theme = e.detail?.theme;
+    if (!mapInstance) return;
+    if (theme === 'light' && currentTileType === 'esri_dark') {
+      setMapTileType('osm_street');
+    } else if (theme === 'dark' && currentTileType === 'osm_street') {
+      setMapTileType('esri_dark');
+    }
+  });
+}
+
 export function initOrUpdateMap(containerId, onSelectCamp) {
   const container = document.getElementById(containerId);
   if (!container) return;

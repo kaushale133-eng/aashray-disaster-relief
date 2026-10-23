@@ -150,6 +150,52 @@ navButtons.forEach(btn => {
   });
 });
 
+// Theme Mode Manager (Dark / Light Mode)
+const themeToggleBtn = document.getElementById('theme-toggle-btn');
+const themeModeLabel = document.getElementById('theme-mode-label');
+
+function applyTheme(theme, notify = false) {
+  const selectedTheme = theme === 'light' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', selectedTheme);
+  try {
+    localStorage.setItem('aashray_theme', selectedTheme);
+  } catch (err) {
+    // ignore storage quota / sandbox restrictions
+  }
+
+  if (themeToggleBtn) {
+    themeToggleBtn.setAttribute('data-active-theme', selectedTheme);
+    themeToggleBtn.setAttribute(
+      'title',
+      `Current: ${selectedTheme === 'light' ? 'Light Mode' : 'Dark Mode'}. Click to switch to ${selectedTheme === 'light' ? 'Dark' : 'Light'} Mode.`
+    );
+    themeToggleBtn.setAttribute('aria-label', `Switch to ${selectedTheme === 'light' ? 'Dark' : 'Light'} Mode`);
+  }
+
+  if (themeModeLabel) {
+    themeModeLabel.textContent = selectedTheme === 'light' ? 'Light' : 'Dark';
+  }
+
+  // Notify components (e.g. Leaflet map layer update)
+  window.dispatchEvent(new CustomEvent('aashray:theme-change', { detail: { theme: selectedTheme } }));
+
+  if (notify) {
+    showToast(`Switched interface to ${selectedTheme === 'light' ? '☀️ Light' : '🌙 Dark'} Mode`, 'info', 2000);
+  }
+}
+
+// Initialize theme from storage (defaults to dark)
+const initialTheme = (typeof localStorage !== 'undefined' && localStorage.getItem('aashray_theme')) || 'dark';
+applyTheme(initialTheme, false);
+
+if (themeToggleBtn) {
+  themeToggleBtn.addEventListener('click', () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+    const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    applyTheme(nextTheme, true);
+  });
+}
+
 // Role Switcher Setup
 const roleSelect = document.getElementById('active-role-select');
 const rolePill = document.getElementById('role-pill-badge');
