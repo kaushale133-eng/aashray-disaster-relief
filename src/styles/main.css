@@ -237,7 +237,7 @@ html, body {
 .brand-titles h1 {
   font-size: 18px;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--text-primary);
   letter-spacing: 0.03em;
   display: flex;
   align-items: center;
@@ -487,7 +487,7 @@ select option,
 .view-header-title {
   font-size: 20px;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--text-primary);
   display: flex;
   align-items: center;
   gap: 10px;
@@ -580,7 +580,7 @@ select option,
 .metric-value {
   font-size: 32px;
   font-weight: 800;
-  color: #ffffff;
+  color: var(--text-primary);
   letter-spacing: -0.02em;
   font-family: var(--font-mono);
 }
@@ -635,7 +635,7 @@ select option,
 .card-title {
   font-size: 15px;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--text-primary);
   display: flex;
   align-items: center;
   gap: 8px;
@@ -1019,7 +1019,7 @@ select option,
 .modal-title {
   font-size: 16px;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--text-primary);
   display: flex;
   align-items: center;
   gap: 8px;
@@ -1391,8 +1391,21 @@ select option,
   }
 }
 
+/* Status Counter Colors (Theme-Adaptive) */
+.status-counter-pending { color: #fbbf24; }
+.status-counter-approved { color: #818cf8; }
+.status-counter-inprogress { color: #22d3ee; }
+.status-counter-delivered { color: #34d399; }
+.status-counter-rejected { color: #fb7185; }
+
+[data-theme="light"] .status-counter-pending { color: #b45309; }
+[data-theme="light"] .status-counter-approved { color: #4338ca; }
+[data-theme="light"] .status-counter-inprogress { color: #0284c7; }
+[data-theme="light"] .status-counter-delivered { color: #15803d; }
+[data-theme="light"] .status-counter-rejected { color: #be123c; }
+
 /* ==========================================================================
-   Comprehensive Light Theme Overrides
+   Comprehensive Light Theme Overrides (High-Contrast & Visible)
    ========================================================================== */
 [data-theme="light"] .banner-live-notice {
   background: linear-gradient(90deg, #fef2f2 0%, #f0fdf4 50%, #eff6ff 100%);
@@ -1450,6 +1463,7 @@ select option,
 }
 
 [data-theme="light"] .card,
+[data-theme="light"] .card-panel,
 [data-theme="light"] .stat-card {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 4px 12px rgba(0, 0, 0, 0.03);
 }
@@ -1466,6 +1480,7 @@ select option,
 
 [data-theme="light"] .data-table td {
   border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-primary);
 }
 
 [data-theme="light"] .data-table tbody tr:hover {
@@ -1523,4 +1538,408 @@ select option,
 [data-theme="light"] .leaflet-popup-tip {
   background: #ffffff !important;
 }
+
+/* Alert Banners in Light Mode (High Contrast, No Invisible Text) */
+[data-theme="light"] .alert-warning {
+  background: #fef3c7;
+  border: 1px solid #f59e0b;
+  color: #78350f;
+  box-shadow: 0 1px 3px rgba(245, 158, 11, 0.12);
+}
+[data-theme="light"] .alert-warning strong {
+  color: #78350f !important;
+}
+[data-theme="light"] .alert-warning .btn-warning {
+  background: #f59e0b !important;
+  color: #ffffff !important;
+  border-color: #d97706 !important;
+  box-shadow: 0 2px 4px rgba(217, 119, 6, 0.3) !important;
+}
+[data-theme="light"] .alert-warning .btn-warning:hover {
+  background: #d97706 !important;
+}
+
+[data-theme="light"] .alert-danger {
+  background: #fee2e2;
+  border: 1px solid #f43f5e;
+  color: #991b1b;
+}
+[data-theme="light"] .alert-danger strong {
+  color: #7f1d1d !important;
+}
+
+[data-theme="light"] .alert-info {
+  background: #e0f2fe;
+  border: 1px solid #0284c7;
+  color: #075985;
+}
+[data-theme="light"] .alert-info strong {
+  color: #0c4a6e !important;
+}
+
+[data-theme="light"] .alert-success {
+  background: #dcfce7;
+  border: 1px solid #10b981;
+  color: #065f46;
+}
+[data-theme="light"] .alert-success strong {
+  color: #064e3b !important;
+}
+
+/* Priority Pills in Light Mode */
+[data-theme="light"] .priority-critical {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #ef4444;
+  font-weight: 700;
+}
+[data-theme="light"] .priority-high {
+  background: #fef3c7;
+  color: #92400e;
+  border: 1px solid #f59e0b;
+  font-weight: 700;
+}
+[data-theme="light"] .priority-normal {
+  background: #f1f5f9;
+  color: #1e293b;
+  border: 1px solid #94a3b8;
+  font-weight: 700;
+}
+
+/* Status Pills in Light Mode */
+[data-theme="light"] .status-pending {
+  background: #fef3c7;
+  color: #92400e;
+  border: 1px solid #f59e0b;
+  font-weight: 600;
+}
+[data-theme="light"] .status-approved {
+  background: #ede9fe;
+  color: #4338ca;
+  border: 1px solid #818cf8;
+  font-weight: 600;
+}
+[data-theme="light"] .status-in-progress {
+  background: #e0f2fe;
+  color: #0369a1;
+  border: 1px solid #0284c7;
+  font-weight: 600;
+}
+[data-theme="light"] .status-delivered {
+  background: #dcfce7;
+  color: #166534;
+  border: 1px solid #22c55e;
+  font-weight: 600;
+}
+[data-theme="light"] .status-rejected {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #f43f5e;
+  font-weight: 600;
+}
+
+/* Metric Badges in Light Mode */
+[data-theme="light"] .metric-badge.warning {
+  background: #fef3c7;
+  color: #b45309;
+}
+[data-theme="light"] .metric-badge.critical {
+  background: #fee2e2;
+  color: #be123c;
+}
+[data-theme="light"] .metric-badge.healthy {
+  background: #dcfce7;
+  color: #047857;
+}
+
+/* Role Perspective Banners in Light Mode */
+[data-theme="light"] .role-perspective-banner {
+  background: #e0f2fe;
+  border-color: #38bdf8;
+  color: #0369a1;
+}
+[data-theme="light"] .role-perspective-banner strong {
+  color: #0c4a6e;
+}
+[data-theme="light"] .role-perspective-banner.manager {
+  background: #dcfce7;
+  border-color: #4ade80;
+  color: #15803d;
+}
+[data-theme="light"] .role-perspective-banner.manager strong {
+  color: #14532d;
+}
+[data-theme="light"] .role-perspective-banner.delivery {
+  background: #fef3c7;
+  border-color: #fbbf24;
+  color: #b45309;
+}
+[data-theme="light"] .role-perspective-banner.delivery strong {
+  color: #78350f;
+}
+[data-theme="light"] .role-perspective-banner.public {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #334155;
+}
+[data-theme="light"] .role-perspective-banner.public strong {
+  color: #0f172a;
+}
+
+/* Global Light Mode Inline Style Rescues */
+[data-theme="light"] strong[style*="color: #fff"],
+[data-theme="light"] strong[style*="color: #ffffff"],
+[data-theme="light"] span[style*="color: #fff"],
+[data-theme="light"] span[style*="color: #ffffff"],
+[data-theme="light"] div[style*="color: #fff"],
+[data-theme="light"] div[style*="color: #ffffff"],
+[data-theme="light"] td span[style*="color: #fff"] {
+  color: var(--text-primary) !important;
+}
+
+[data-theme="light"] span[style*="color: #cbd5e1"],
+[data-theme="light"] div[style*="color: #cbd5e1"],
+[data-theme="light"] span[style*="color: #f1f5f9"],
+[data-theme="light"] div[style*="color: #f1f5f9"] {
+  color: var(--text-primary) !important;
+}
+
+/* Preserve intentional white colors on buttons and badges */
+[data-theme="light"] .btn-primary,
+[data-theme="light"] .badge-tag,
+[data-theme="light"] .camp-marker-icon,
+[data-theme="light"] .brand-logo-badge {
+  color: #ffffff !important;
+}
+
+/* ==========================================================================
+   Multi-Device Responsive System (Projector, Laptop, Tablet, Mobile)
+   ========================================================================== */
+
+/* 1. Large Displays & Projectors (Command Center Screens >= 1600px) */
+@media (min-width: 1600px) {
+  .header-main,
+  .nav-bar,
+  .main-content {
+    max-width: 1800px;
+  }
+
+  .metrics-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .view-header-title {
+    font-size: 24px;
+  }
+}
+
+/* 2. Tablets & Small Laptops (769px - 1024px) */
+@media (max-width: 1024px) {
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .dashboard-split-layout {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* 3. Mobile Devices & Small Tablets (<= 768px) */
+@media (max-width: 768px) {
+  .top-header {
+    position: sticky;
+    top: 0;
+  }
+
+  .banner-live-notice {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    padding: 8px 14px;
+    font-size: 11px;
+  }
+
+  .header-main {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 10px 14px;
+  }
+
+  .header-actions {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .role-selector-wrap {
+    flex: 1;
+    min-width: 170px;
+  }
+
+  .role-select {
+    width: 100%;
+    font-size: 11.5px;
+  }
+
+  .theme-toggle-btn {
+    padding: 5px 9px;
+    font-size: 11.5px;
+  }
+
+  /* Smooth scrollable navigation tabs on mobile */
+  .nav-bar {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 0 12px;
+    gap: 4px;
+  }
+
+  .nav-bar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-tab-btn {
+    flex-shrink: 0;
+    white-space: nowrap;
+    font-size: 12px;
+    padding: 10px 12px;
+  }
+
+  .main-content {
+    padding: 12px;
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .status-breakdown-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px;
+  }
+
+  .card-panel {
+    padding: 14px;
+    margin-bottom: 16px;
+  }
+
+  .view-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .view-header-title {
+    font-size: 18px;
+  }
+
+  .view-actions {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .view-actions .btn {
+    flex: 1;
+    min-width: 140px;
+  }
+
+  /* Responsive table containers */
+  .data-table-wrap,
+  .table-responsive,
+  table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #camp-map-container {
+    height: 350px !important;
+  }
+
+  .modal-container,
+  .modal-box {
+    width: 95vw !important;
+    max-width: 95vw !important;
+    max-height: 90vh !important;
+    overflow-y: auto !important;
+    margin: 5vh auto;
+  }
+
+  .modal-body {
+    padding: 14px;
+  }
+
+  .alert-box {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .alert-box button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* 4. Small Mobile Phones (<= 480px) */
+@media (max-width: 480px) {
+  .brand-titles h1 {
+    font-size: 15px;
+  }
+
+  .brand-titles .tagline {
+    font-size: 10px;
+    line-height: 1.25;
+  }
+
+  .brand-logo-badge {
+    width: 34px;
+    height: 34px;
+  }
+
+  #role-pill-badge {
+    display: none;
+  }
+
+  .theme-toggle-text {
+    display: none;
+  }
+
+  .theme-toggle-btn {
+    padding: 6px 10px;
+  }
+
+  .role-selector-wrap label {
+    font-size: 9.5px;
+  }
+
+  .status-breakdown-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  .filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-bar .form-control,
+  .filter-bar select,
+  .filter-bar input {
+    width: 100%;
+  }
+}
+
 

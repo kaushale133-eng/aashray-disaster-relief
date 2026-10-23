@@ -144,31 +144,31 @@ export function renderDashboard(container, navigateTo) {
     ` : ''}
 
     <!-- Quick Status Breakdown Grid -->
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-bottom: 24px;">
+    <div class="status-breakdown-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 24px;">
       <div class="card-panel" style="padding: 12px 16px; margin-bottom: 0;">
         <div style="color: var(--text-muted); font-size: 11px; text-transform: uppercase;">Pending Review</div>
-        <div style="font-size: 22px; font-weight: 700; color: #fbbf24; font-family: var(--font-mono);">${metrics.statusCounts['Pending'] || 0}</div>
+        <div class="status-counter-pending" style="font-size: 22px; font-weight: 700; font-family: var(--font-mono);">${metrics.statusCounts['Pending'] || 0}</div>
       </div>
       <div class="card-panel" style="padding: 12px 16px; margin-bottom: 0;">
         <div style="color: var(--text-muted); font-size: 11px; text-transform: uppercase;">Approved</div>
-        <div style="font-size: 22px; font-weight: 700; color: #818cf8; font-family: var(--font-mono);">${metrics.statusCounts['Approved'] || 0}</div>
+        <div class="status-counter-approved" style="font-size: 22px; font-weight: 700; font-family: var(--font-mono);">${metrics.statusCounts['Approved'] || 0}</div>
       </div>
       <div class="card-panel" style="padding: 12px 16px; margin-bottom: 0;">
         <div style="color: var(--text-muted); font-size: 11px; text-transform: uppercase;">In Progress</div>
-        <div style="font-size: 22px; font-weight: 700; color: #22d3ee; font-family: var(--font-mono);">${metrics.statusCounts['In Progress'] || 0}</div>
+        <div class="status-counter-inprogress" style="font-size: 22px; font-weight: 700; font-family: var(--font-mono);">${metrics.statusCounts['In Progress'] || 0}</div>
       </div>
       <div class="card-panel" style="padding: 12px 16px; margin-bottom: 0;">
         <div style="color: var(--text-muted); font-size: 11px; text-transform: uppercase;">Delivered</div>
-        <div style="font-size: 22px; font-weight: 700; color: #34d399; font-family: var(--font-mono);">${metrics.statusCounts['Delivered'] || 0}</div>
+        <div class="status-counter-delivered" style="font-size: 22px; font-weight: 700; font-family: var(--font-mono);">${metrics.statusCounts['Delivered'] || 0}</div>
       </div>
       <div class="card-panel" style="padding: 12px 16px; margin-bottom: 0;">
         <div style="color: var(--text-muted); font-size: 11px; text-transform: uppercase;">Rejected</div>
-        <div style="font-size: 22px; font-weight: 700; color: #fb7185; font-family: var(--font-mono);">${metrics.statusCounts['Rejected'] || 0}</div>
+        <div class="status-counter-rejected" style="font-size: 22px; font-weight: 700; font-family: var(--font-mono);">${metrics.statusCounts['Rejected'] || 0}</div>
       </div>
     </div>
 
     <!-- Two Column Layout: Recent Requests & Low Stock Alerts -->
-    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px;">
+    <div class="dashboard-split-layout" style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px;">
       
       <!-- Recent Requests -->
       <div class="card-panel" style="margin-bottom: 0;">

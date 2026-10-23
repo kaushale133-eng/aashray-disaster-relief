@@ -178,10 +178,6 @@ function applyTheme(theme, notify = false) {
 
   // Notify components (e.g. Leaflet map layer update)
   window.dispatchEvent(new CustomEvent('aashray:theme-change', { detail: { theme: selectedTheme } }));
-
-  if (notify) {
-    showToast(`Switched interface to ${selectedTheme === 'light' ? '☀️ Light' : '🌙 Dark'} Mode`, 'info', 2000);
-  }
 }
 
 // Initialize theme from storage (defaults to dark)
@@ -192,7 +188,7 @@ if (themeToggleBtn) {
   themeToggleBtn.addEventListener('click', () => {
     const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
     const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    applyTheme(nextTheme, true);
+    applyTheme(nextTheme, false);
   });
 }
 
